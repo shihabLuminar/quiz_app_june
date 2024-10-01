@@ -10,9 +10,9 @@ class QuestionsScreen extends StatefulWidget {
 }
 
 class _QuestionsScreenState extends State<QuestionsScreen> {
-  int questionIndex = 0;
+  int questionIndex = 0; //sidhofusg
 
-  int? selectedAnswerIndex;
+  int? selectedAnswerIndex; //soihfosioeuf
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,10 +69,9 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           border: Border.all(
-                              color: selectedAnswerIndex == optionIndex
-                                  ? ColorConstants.wrongAnswerColor
-                                  : ColorConstants.questionsBgColor,
-                              width: 2)),
+                            color: getColor(optionIndex),
+                            width: 2,
+                          )),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -97,7 +96,9 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
             SizedBox(height: 20),
             InkWell(
               onTap: () {
+                selectedAnswerIndex = null; // lksdfjlksdlf
                 if (questionIndex < DummyDb.questionList.length - 1) {
+                  //oisdjofiois
                   questionIndex++;
                   setState(() {});
                 } else {
@@ -125,5 +126,26 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
         ),
       ),
     );
+  }
+
+  Color getColor(int currentOptinIndex) {
+    //sdljfisjodf
+    if (selectedAnswerIndex != null &&
+        currentOptinIndex ==
+            DummyDb.questionList[questionIndex]["answerIndex"]) {
+      return ColorConstants.rightAnswerColor;
+    }
+
+//soidfoshidhfo
+    if (selectedAnswerIndex == currentOptinIndex) {
+      if (selectedAnswerIndex ==
+          DummyDb.questionList[questionIndex]["answerIndex"]) {
+        return ColorConstants.rightAnswerColor;
+      } else {
+        return ColorConstants.wrongAnswerColor;
+      }
+    } else {
+      return ColorConstants.questionsBgColor;
+    }
   }
 }
