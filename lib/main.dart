@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app_june/utils/color_constants.dart';
 import 'package:quiz_app_june/view/quesitons_screen/questions_screen.dart';
 
 void main() {
@@ -12,6 +13,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+          scaffoldBackgroundColor: ColorConstants.scaffoldBackgroundColor),
       home: QuestionsScreen(),
     );
   }
